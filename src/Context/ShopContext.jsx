@@ -32,7 +32,37 @@ const ShopContextProvider = (props) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     }
 
-    const contextValue = {all_product,cartItems,addToCart,removeFromCart};
+    // now we are create total sum function for the cart section
+    // check this code later why thus is not working
+    /************************************************************************** */
+    const getTotalCartAmount = () =>{
+        let totalAmount = 0;
+        for(const item in cartItems)
+        {
+            if(cartItems[item]>0){
+                // use to find the number of product inside the cart
+                let itemInfo = all_product.find((product)=>product.id===Number(item));
+                totalAmount+= itemInfo.new_price*cartItems[item];
+            }
+            return totalAmount;
+        }
+    }
+    /************************************************************************** */
+    // create login cart count icon for cart section
+    const getTotalCartItems = () =>{
+        let totalItem = 0;
+        for(const item in cartItems)
+        {
+            if(cartItems[item]>0)
+            {
+                totalItem+= cartItems[item];
+            }
+        }
+        return totalItem;
+    }
+
+
+    const contextValue = {getTotalCartItems,all_product,cartItems,addToCart,removeFromCart,getTotalCartAmount};
 
     // console.log(cartItems);
     // checking the cart item list of item in cart and how item order of the product in the shopping cart

@@ -12,7 +12,7 @@ export const Footer = () => {
             <img src={websitelogo} alt=""/>
             <p>AnimeEnsemble</p>
         </div>
-        <ul>
+        <ul className="link">
             <li>Company</li>
             <li>Product</li>
             <li>Offices</li>
